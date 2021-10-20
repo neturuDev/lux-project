@@ -5,10 +5,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 
-const Modal = ({open, handleClose, handleSubmit, children}) => {
+const Modal = ({open = false, handleClose, handleSubmit, children, heading}) => {
   return (
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Book</DialogTitle>
+        <DialogTitle>{heading}</DialogTitle>
         <DialogContent>
           {children}
         </DialogContent>

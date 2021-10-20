@@ -4,9 +4,6 @@ import Grid from '@mui/material/Grid';
 
 const SelectionsList = ({selections}) => {
   return(<>
-    <div className="grid-container">
-      <div className="text-center"><h1>Selections list</h1></div>
-    </div>
     <Grid container spacing={2}>
       {selections.map((selection) => {
         return(

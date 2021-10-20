@@ -1,10 +1,17 @@
-import { fetchBooks, fetchOneBook } from './actions';
-import { deleteBook, editBook } from './api'
+import { fetchBooks, fetchOneBook, fetchSelections } from './actions';
+import { deleteBook, editBook, deleteSelection } from './api'
 
 export const deleteOneBook = (bookId, errorHandler) => {
   deleteBook(bookId, errorHandler);
   return (dispatch) => {
     dispatch(fetchBooks());
+  }
+}
+
+export const deleteOneSelection = (selectionId, errorHandler) => {
+  deleteSelection(selectionId, errorHandler);
+  return (dispatch) => {
+    dispatch(fetchSelections());
   }
 }
 

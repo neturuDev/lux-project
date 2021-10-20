@@ -20,7 +20,7 @@ const BookForm = ({defaultTitle='', defaultAuthor='', onSubmit, onOpen, onClose,
   }
 
   return(<>
-    <Modal open={isOpen} handleClose={onClose} handleSubmit={handleSubmit}>
+    <Modal open={isOpen} handleClose={onClose} handleSubmit={handleSubmit} heading='Book'>
       <TextField
         autoFocus
         margin="dense"

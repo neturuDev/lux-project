@@ -1,15 +1,7 @@
-import { Link } from "react-router-dom";
-import { useDispatch } from 'react-redux';
 import BooksListItem from './BooksListItem';
 import Grid from '@mui/material/Grid';
-// import { deleteBook } from '../redux/actions';
 
 const BooksList = ({booksList}) => {
-  const dispatch = useDispatch();
-  const deleteBookHandler = (id) => {
-    // const deleteCurrentBook = deleteBook(id);
-    // deleteCurrentBook(dispatch);
-  }
 
   return(<>
   <Grid container spacing={2}>

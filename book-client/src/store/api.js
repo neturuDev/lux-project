@@ -1,17 +1,25 @@
 export async function deleteBook(bookId, errorHandler) {
-
     const response = await fetch(`http://localhost:7000/books/${bookId}`, 
       {
         method: 'DELETE'
       }
     );
-
     const result = await response.json();
-
     if(result.hasOwnProperty('err')) {
       errorHandler(result.err);
     } 
+}
 
+export async function deleteSelection(selectionId, errorHandler) {
+  const response = await fetch(`http://localhost:7000/selections/${selectionId}`, 
+    {
+      method: 'DELETE'
+    }
+  );
+  const result = await response.json();
+  if(result.hasOwnProperty('err')) {
+    errorHandler(result.err);
+  } 
 }
 
 // export async function deleteBookTwo(action) {

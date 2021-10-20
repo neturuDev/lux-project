@@ -1,11 +1,30 @@
-import * as React from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import ErrorModal from './ErrorModal';
+import { deleteOneSelection } from '../store/dispatchers';
 
-const SelectionsListItem = ({author, title, email, date, id, books}) => {
-  return (
+const SelectionsListItem = ({author, title, email, id, books}) => {
+  const dispatch = useDispatch();
+  const [deleteSelectionError, setDeleteSelectionError] = useState(null);
+
+  const deleteSelectionErrorHandler = (error) => {
+    if (error.length > 0) setDeleteSelectionError(error);
+  }
+
+  const closeErrorModalHandler = () => {
+    setDeleteSelectionError(null);
+  }
+
+  const deleteSelectionHandler = () => {
+    const deleteSelection = deleteOneSelection(id, deleteSelectionErrorHandler);
+    deleteSelection(dispatch);
+  }
+
+  return (<>
     <Card variant="outlined">
       <CardActionArea>
         <CardContent>
@@ -18,18 +37,22 @@ const SelectionsListItem = ({author, title, email, date, id, books}) => {
           <Typography gutterBottom variant="h6" component="div">
             Email: {email}
           </Typography>
-          <Typography gutterBottom variant="h6" component="div">
-            Date: {date}
-          </Typography>
+    
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" onClick={deleteSelectionHandler}>
           Delete selection
         </Button>
       </CardActions>
     </Card>
-  );
+    {deleteSelectionError && 
+      <ErrorModal 
+        open={!!deleteSelectionError} 
+        handleClose={closeErrorModalHandler}
+        >{deleteSelectionError}
+      </ErrorModal>}
+  </>);
 }
 
 export default SelectionsListItem;
