@@ -22,18 +22,6 @@ export async function deleteSelection(selectionId, errorHandler) {
   } 
 }
 
-// export async function deleteBookTwo(action) {
-//   try {
-//     const request = await fetch(`http://localhost:7000/books/${action.payload}`, 
-//       {
-//         method: 'DELETE'
-//       }
-//     );
-//     return action
-//   } catch (error) {
-//   }
-// }
-
 
 export async function addBook(book) {
   await fetch('http://localhost:7000/books', 
@@ -43,6 +31,18 @@ export async function addBook(book) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(book)
+    }
+  );
+}
+
+export async function addSelection(selection) {
+  await fetch('http://localhost:7000/selections', 
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(selection)
     }
   );
 }

@@ -18,11 +18,11 @@ const SelectionsPage = () => {
   <Paper sx={{ p: 1, margin: 'auto', flexGrow: 1 }} elevation={0} square>
       <Grid container spacing={2} justifyContent="space-between" alignItems="center">
         <Grid item><h1>Selections list</h1></Grid>
-        <Grid item>
+        {/* <Grid item>
           <Button color="primary" variant="outlined">
             Add new selection
           </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Paper>
     <SelectionsList selections={selectionsList} />
