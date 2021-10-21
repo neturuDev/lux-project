@@ -1,8 +1,7 @@
 const initial = {
   books: [],
   currentBook: {},
-  selections: [],
-  currentSelection: {}
+  selections: []
 }
 
 export default function reducer(state = initial, action) {

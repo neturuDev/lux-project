@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -43,20 +44,22 @@ const SelectionsListItem = ({author, title, email, selectionId, date}) => {
 
   return (<>
     <Card variant="outlined">
-      <CardActionArea>
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="div">
-            {title}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            Author: {author}
-          </Typography>
-          <Typography gutterBottom variant="h6" component="div">
-            Email: {email}
-          </Typography>
-    
-        </CardContent>
-      </CardActionArea>
+      <Link className="bookListItemLink" to={`/selections/${selectionId}`}>
+        <CardActionArea>
+          <CardContent>
+            <Typography gutterBottom variant="h4" component="div">
+              {title}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              Author: {author}
+            </Typography>
+            <Typography gutterBottom variant="h6" component="div">
+              Email: {email}
+            </Typography>
+      
+          </CardContent>
+        </CardActionArea>
+      </Link>
       <CardActions>
         <Button color="error" onClick={deleteSelectionHandler}>
           Delete selection
