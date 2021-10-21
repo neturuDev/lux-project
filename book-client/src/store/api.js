@@ -63,3 +63,29 @@ export async function editBook(book) {
     }
   );
 }
+
+export async function editSelection(selection) {
+  console.log('Edit selection PUT')
+  const {
+    selectionId, 
+    selectionTitle, 
+    selectionAuthor,
+    authorEmail,
+    selectionDate
+  } = selection;
+
+  await fetch(`http://localhost:7000/selections/${selectionId}`, 
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        author: selectionAuthor,
+        title: selectionTitle,
+        email: authorEmail,
+        date: selectionDate
+      })
+    }
+  );
+}

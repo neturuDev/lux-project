@@ -1,5 +1,5 @@
-import { fetchBooks, fetchOneBook, fetchSelections } from './actions';
-import { deleteBook, editBook, deleteSelection } from './api'
+import { fetchBooks, fetchOneBook, fetchSelections, fetchOneSelection } from './actions';
+import { deleteBook, editBook, deleteSelection, editSelection } from './api'
 
 export const deleteOneBook = (bookId, errorHandler) => {
   deleteBook(bookId, errorHandler);
@@ -18,5 +18,11 @@ export const deleteOneSelection = (selectionId, errorHandler) => {
 export const updateOneBook = (book, isInList) => {
   editBook(book);
   return isInList ? (dispatch) => {dispatch(fetchBooks())} : (dispatch) => {dispatch(fetchOneBook(book.bookId))}
+}
+
+export const updateOneSelection = (selection) => {
+  console.log('Edit selection run')
+  editSelection(selection);
+  return (dispatch) => {dispatch(fetchSelections())};
 }
 

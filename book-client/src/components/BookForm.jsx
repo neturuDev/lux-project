@@ -4,7 +4,7 @@ import Modal from './Modal';
 
 
 
-const BookForm = ({defaultTitle='', defaultAuthor='', onSubmit, onOpen, onClose, isOpen}) => {
+const BookForm = ({defaultTitle='', defaultAuthor='', onSubmit, onClose, isOpen}) => {
   const [bookTitle, setBookTitle] = useState(defaultTitle);
   const [bookAuthor, setBookAuthor] = useState(defaultAuthor);
 
@@ -31,6 +31,7 @@ const BookForm = ({defaultTitle='', defaultAuthor='', onSubmit, onOpen, onClose,
         variant="standard"
         value={bookTitle}
         onChange={handleTitleChange}
+        variant="outlined"
       />
       <TextField
         margin="dense"
@@ -41,6 +42,7 @@ const BookForm = ({defaultTitle='', defaultAuthor='', onSubmit, onOpen, onClose,
         variant="standard"
         value={bookAuthor}
         onChange={handleAuthorChange}
+        variant="outlined"
       />
 
     </Modal>

@@ -1,8 +1,7 @@
 import { mergeMap, map } from 'rxjs/operators';
 import { ofType, combineEpics } from 'redux-observable';
 import { ajax } from 'rxjs/ajax';
-import { setBooks, setOneBook, setSelections, deleteOneBook, removeOneBook } from './actions';
-import { deleteBook, deleteBookTwo } from './api';
+import { setBooks, setOneBook, setSelections } from './actions';
 
 
 
@@ -12,16 +11,6 @@ const ajaxGet = (url = null, actionFunc) => {
   )
 }
 
-
-
-// export const deleteBookEpic = action$ => action$.pipe(
-//   ofType('REMOVE_ONE_BOOK'),
-//   mergeMap(action =>
-//     deleteBookTwo(action).pipe(
-//       ajaxGet('books', setBooks)
-//     )
-//   )
-// );
 
 export const fetchBooksEpic = action$ => action$.pipe(
   ofType('FETCH_BOOKS'),

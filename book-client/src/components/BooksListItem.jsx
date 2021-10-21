@@ -8,7 +8,6 @@ import { Link, useHistory } from "react-router-dom";
 import { deleteOneBook, updateOneBook } from '../store/dispatchers';
 import BookForm from './BookForm';
 import ErrorModal from './ErrorModal';
-import { removeOneBook } from '../store/actions';
 
 const BooksListItem = ({title, author, bookId, className, isInList = false}) => {
   const dispatch = useDispatch();
