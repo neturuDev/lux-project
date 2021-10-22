@@ -32,7 +32,7 @@ const SelectionsPage = () => {
   const selectionsList = useSelector(state => state.selections) || [];
 
   return (<>
-  <Paper sx={{ p: 1, margin: 'auto', flexGrow: 1 }} elevation={0} square>
+    <Paper sx={{ p: 1, margin: 'auto', flexGrow: 1 }} elevation={0} square>
       <Grid container spacing={2} justifyContent="space-between" alignItems="center">
         <Grid item><h1>Selections list</h1></Grid>
         <Grid item>

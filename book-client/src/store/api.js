@@ -44,6 +44,18 @@ export async function addBook(book) {
   );
 }
 
+export async function addBookToSelection(selectionId, bookId) {
+  await fetch(`http://localhost:7000/selections/${selectionId}/books`, 
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify([bookId])
+    }
+  );
+}
+
 export async function addSelection(selection) {
   await fetch('http://localhost:7000/selections', 
     {
