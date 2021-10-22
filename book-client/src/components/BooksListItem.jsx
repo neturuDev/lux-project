@@ -5,11 +5,11 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from "react-router-dom";
-import { deleteOneBook, updateOneBook } from '../store/dispatchers';
+import { deleteOneBook, updateOneBook, removeBookFromSelection } from '../store/dispatchers';
 import BookForm from './BookForm';
 import ErrorModal from './ErrorModal';
 
-const BooksListItem = ({title, author, bookId, className, isInList = false}) => {
+const BooksListItem = ({title, author, bookId, className, isInList = false, isInSelection = false, selectionId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -38,6 +38,11 @@ const BooksListItem = ({title, author, bookId, className, isInList = false}) => 
     // dispatch(removeOneBook(bookId));
   }
 
+  const removeFromSelectionHandler = () => {
+    const removeBook = removeBookFromSelection(selectionId, bookId);
+    removeBook(dispatch);
+  }
+
   const editBookHandler = (bookTitle, bookAuthor) => {
     const book = {bookId, bookTitle, bookAuthor};
     const updateBook = updateOneBook(book, isInList);
@@ -60,9 +65,16 @@ const BooksListItem = ({title, author, bookId, className, isInList = false}) => 
         </CardActionArea>
       </Link>
       <CardActions>
-        <Button onClick={deleteBookHandler} color="error">
-          Delete book
-        </Button>
+        {isInSelection &&
+          <Button onClick={removeFromSelectionHandler} color="error">
+            Remove from selection
+          </Button>
+        }
+        {!isInSelection &&
+          <Button onClick={deleteBookHandler} color="error">
+            Delete book
+          </Button>
+        }
         <Button onClick={openModalHandler} color="primary">
           Edit book
         </Button>

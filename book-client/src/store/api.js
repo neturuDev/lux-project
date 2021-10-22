@@ -22,6 +22,15 @@ export async function deleteSelection(selectionId, errorHandler) {
   } 
 }
 
+export async function deleteBookFromSelection(selectionId, bookId) {
+  await fetch(`http://localhost:7000/selections/${selectionId}/books/${bookId}`, 
+    {
+      method: 'DELETE'
+    }
+  );
+
+}
+
 
 export async function addBook(book) {
   await fetch('http://localhost:7000/books', 

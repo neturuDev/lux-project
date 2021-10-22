@@ -14,11 +14,6 @@ const ajaxGet = (url = null, actionFunc) => {
 
 export const fetchBooksEpic = action$ => action$.pipe(
   ofType('FETCH_BOOKS'),
-  // mergeMap(action =>
-  //   ajax.getJSON(`http://localhost:7000/books`).pipe(
-  //     map(response => setBooks(response))
-  //   )
-  // )
   mergeMap(action =>
     ajaxGet('books', setBooks)
   )
@@ -39,9 +34,6 @@ export const fetchOneBookEpic = action$ => action$.pipe(
 export const fetchSelectionsEpic = action$ => action$.pipe(
   ofType('FETCH_SELECTIONS'),
   mergeMap(action =>
-    // ajax.getJSON(`http://localhost:7000/selections`).pipe(
-    //   map(response => setSelections(response))
-    // )
     ajaxGet('selections', setSelections)
   )
 );
@@ -49,8 +41,7 @@ export const fetchSelectionsEpic = action$ => action$.pipe(
 const rootEpic = combineEpics(
   fetchBooksEpic,
   fetchOneBookEpic,
-  fetchSelectionsEpic,
-  // deleteBookEpic
+  fetchSelectionsEpic
 );
 
 export default rootEpic;

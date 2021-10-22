@@ -1,7 +1,5 @@
-import { useDispatch } from 'react-redux';
 
-
-const OneSelection = ({author, title, email, selectionId, date}) => {
+const OneSelection = ({author, title, email, date}) => {
   return(<>
     <h1>Selection: {title}</h1>
     <p>Selection author: {author}</p>
