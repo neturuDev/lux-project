@@ -1,7 +1,4 @@
 import { useState } from 'react';
-// import AdapterDateFns from '@mui/lab/AdapterDateFns';
-// import LocalizationProvider from '@mui/lab/LocalizationProvider';
-// import DateTimePicker from '@mui/lab/DateTimePicker';
 import TextField from '@mui/material/TextField';
 
 
@@ -90,7 +87,7 @@ const SelectionForm = ({
         required
         margin="dense"
         id="datetime-local"
-        label="Next appointment"
+        label="Date"
         type="datetime-local"
         defaultValue={selectionDate}
         onChange={handleDateChange}

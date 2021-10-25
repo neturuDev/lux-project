@@ -6,7 +6,7 @@ import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 import Modal from './Modal';
 
-const BookToSelectionForm = ({books, onSubmit, onClose, isOpen}) => {
+const BookToSelectionForm = ({books = [], onSubmit, onClose, isOpen}) => {
 
   const [chosenBook, setChosenBook] = useState('');
 
@@ -22,16 +22,16 @@ const BookToSelectionForm = ({books, onSubmit, onClose, isOpen}) => {
     <Modal open={isOpen} handleClose={onClose} handleSubmit={handleSubmit} heading='Add book to selection'>
       {(books.length > 0) &&
         <FormControl fullWidth margin="dense">
-          <InputLabel id="demo-simple-select-label">Book</InputLabel>
+          <InputLabel id="book-label">Book</InputLabel>
           <Select
-            labelId="book"
+            labelId="book-label"
             id="book"
             value={chosenBook}
             label="Book"
             onChange={handleChange}
           >
           {
-            books.map((book) => <MenuItem value={book._id}>{book.author} - {book.title}</MenuItem>)
+            books.map((book) => <MenuItem key={book._id} value={book._id}>{book.author} - {book.title}</MenuItem>)
           }
             
           </Select>
